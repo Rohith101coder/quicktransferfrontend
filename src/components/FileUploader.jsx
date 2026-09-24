@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { uploadFile } from "../services/api";
+import "./FileUploader.css";
 
 function FileUploader({ onUploadComplete }) {
   const fileInputRef = useRef(null);

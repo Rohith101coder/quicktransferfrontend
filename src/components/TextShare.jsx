@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { sendText, completeText, deleteText } from "../services/api";
-
+import "./TextShare.css";
 function TextShare({ texts, onTextChange }) {
   const [content, setContent] = useState("");
   const [sending, setSending] = useState(false);

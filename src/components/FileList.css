@@ -1,0 +1,36 @@
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 42px 20px;
+  border: 1px dashed rgba(0, 240, 255, 0.2);
+  border-radius: var(--radius-sm);
+  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.03) 0%, transparent 70%);
+}
+
+.empty-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.empty-state span {
+  font-family: var(--font-code);
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}

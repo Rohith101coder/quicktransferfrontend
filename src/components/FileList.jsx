@@ -1,5 +1,5 @@
 import FileItem from "./FileItem";
-
+import "./FileList.css";
 function FileList({ files, loading, onFileDeleted }) {
   if (loading) {
     return <div className="empty-state">Loading files...</div>;

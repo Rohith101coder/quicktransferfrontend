@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { downloadFile, completeDownload, deleteFile } from "../services/api";
-
+import "./FileItem.css";
 function FileItem({ file, onFileDeleted }) {
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState("");

@@ -4,7 +4,7 @@ import FileUploader from "./components/FileUploader";
 import FileList from "./components/FileList";
 import TextShare from "./components/TextShare";
 import { getFiles, getTexts } from "./services/api";
-
+import "./App.css";
 import "./index.css";
 
 function App() {
