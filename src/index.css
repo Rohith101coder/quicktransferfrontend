@@ -1,0 +1,729 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: #172033;
+    background: #f4f7fb;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-light: #eef2ff;
+
+    --text-primary: #172033;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+
+    --border: #e5eaf1;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+
+    --danger: #ef4444;
+    --danger-light: #fef2f2;
+
+    --shadow-sm:
+        0 1px 2px rgba(15, 23, 42, 0.04);
+
+    --shadow-md:
+        0 8px 30px rgba(15, 23, 42, 0.07);
+
+    --shadow-lg:
+        0 20px 50px rgba(15, 23, 42, 0.09);
+
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 9px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(99, 102, 241, 0.08),
+            transparent 32%
+        ),
+        #f4f7fb;
+
+    color: var(--text-primary);
+}
+
+button {
+    font-family: inherit;
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.2);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    position: relative;
+
+    padding: 54px 20px 48px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f8faff 100%
+        );
+
+    border-bottom: 1px solid var(--border);
+}
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -80px;
+    right: 10%;
+
+    background: rgba(99, 102, 241, 0.08);
+
+    border-radius: 50%;
+
+    filter: blur(2px);
+
+    pointer-events: none;
+}
+
+.header h1 {
+    position: relative;
+    z-index: 1;
+
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 750;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #4f46e5
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header p {
+    position: relative;
+    z-index: 1;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 880px;
+
+    margin: 42px auto;
+
+    padding: 0 20px 60px;
+}
+
+
+/* =========================================================
+   UPLOAD CARD
+========================================================= */
+
+.upload-card {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 34px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-md);
+
+    overflow: hidden;
+}
+
+.upload-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #8b5cf6,
+            #4f46e5
+        );
+}
+
+.upload-card h2 {
+    font-size: 21px;
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+
+    margin-bottom: 7px;
+}
+
+.upload-card p {
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   UPLOAD BUTTON
+========================================================= */
+
+.upload-button {
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #6366f1
+        );
+
+    color: white;
+
+    padding: 13px 24px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 14px;
+    font-weight: 650;
+
+    box-shadow:
+        0 5px 15px rgba(79, 70, 229, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.upload-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(79, 70, 229, 0.28);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-hover),
+            #4f46e5
+        );
+}
+
+.upload-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-container {
+    width: 100%;
+
+    height: 7px;
+
+    margin-top: 22px;
+
+    background: #e9edf4;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4f46e5,
+            #8b5cf6
+        );
+
+    border-radius: inherit;
+
+    transition: width 0.2s ease;
+}
+
+
+/* =========================================================
+   FILE SECTION
+========================================================= */
+
+.files-section {
+    margin-top: 28px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 25px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+.section-header span {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   FILE LIST
+========================================================= */
+
+.file-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   FILE ITEM
+========================================================= */
+
+.file-item {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 15px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.file-item:hover {
+    transform: translateY(-1px);
+
+    border-color: #d8def0;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================================
+   FILE ICON
+========================================================= */
+
+.file-preview {
+    flex: 0 0 46px;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f3ff,
+            #f7f5ff
+        );
+
+    border: 1px solid #e6e7ff;
+
+    border-radius: 11px;
+
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   FILE INFORMATION
+========================================================= */
+
+.file-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.file-name {
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.file-size {
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   FILE ACTIONS
+========================================================= */
+
+.file-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* Download */
+
+.download-button {
+    border: none;
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+
+    padding: 8px 13px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 12px;
+    font-weight: 650;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.download-button:hover:not(:disabled) {
+    background: #e0e7ff;
+
+    transform: translateY(-1px);
+}
+
+
+/* Delete */
+
+.delete-button {
+    border: 1px solid #fee2e2;
+
+    background: white;
+
+    color: var(--danger);
+
+    padding: 7px 12px;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.delete-button:hover:not(:disabled) {
+    background: var(--danger-light);
+
+    border-color: #fecaca;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 55px 20px;
+
+    text-align: center;
+}
+
+.empty-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    background: #f5f7fb;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    font-size: 27px;
+}
+
+.empty-state p {
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 650;
+
+    margin-bottom: 5px;
+}
+
+.empty-state span {
+    color: var(--text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ERROR MESSAGES
+========================================================= */
+
+.error-message {
+    margin-top: 14px;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+.file-error {
+    position: absolute;
+
+    left: 15px;
+    bottom: -20px;
+
+    color: #dc2626;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .header {
+        padding: 40px 18px 36px;
+    }
+
+    .container {
+        margin: 25px auto;
+
+        padding:
+            0 12px
+            45px;
+    }
+
+    .upload-card {
+        padding: 28px 18px;
+    }
+
+    .files-section {
+        padding: 17px 12px;
+    }
+
+    .section-header {
+        margin-bottom: 14px;
+    }
+
+    .file-item {
+        padding: 12px;
+
+        gap: 11px;
+    }
+
+    .file-preview {
+        flex-basis: 42px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .file-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 5px;
+    }
+
+    .download-button,
+    .delete-button {
+        padding: 7px 9px;
+
+        white-space: nowrap;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 13px;
+    }
+
+    .upload-card h2 {
+        font-size: 19px;
+    }
+
+    .file-name {
+        max-width: 145px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .section-header span {
+        font-size: 11px;
+    }
+}
