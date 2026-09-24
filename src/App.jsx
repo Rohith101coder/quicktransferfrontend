@@ -2,14 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 
 import FileUploader from "./components/FileUploader";
 import FileList from "./components/FileList";
-
-import { getFiles } from "./services/api";
+import TextShare from "./components/TextShare";
+import { getFiles, getTexts } from "./services/api";
 
 import "./index.css";
 
 function App() {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [texts, setTexts] = useState([]);
 
   const fetchFiles = useCallback(async () => {
     try {
@@ -23,21 +24,41 @@ function App() {
     }
   }, []);
 
+  const fetchTexts = useCallback(async () => {
+
+    try {
+
+        const data = await getTexts();
+
+        setTexts(data.texts || []);
+
+    } catch (error) {
+
+        console.error(
+            "Failed to fetch texts:",
+            error
+        );
+    }
+
+}, []);
+
   // Initial fetch
   useEffect(() => {
     fetchFiles();
-  }, [fetchFiles]);
+    fetchTexts();
+  }, [fetchFiles, fetchTexts]);
 
   // Poll every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchFiles();
-    }, 3000);
+useEffect(() => {
+  const interval = setInterval(() => {
+    fetchFiles();
+    fetchTexts();
+  }, 3000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [fetchFiles]);
+  return () => {
+    clearInterval(interval);
+  };
+}, [fetchFiles, fetchTexts]);
 
   const handleUploadComplete = () => {
     fetchFiles();
@@ -65,6 +86,8 @@ function App() {
 
           <FileUploader onUploadComplete={handleUploadComplete} />
         </section>
+
+        <TextShare texts={texts} onTextChange={fetchTexts} />
 
         <section className="files-section">
           <div className="section-header">

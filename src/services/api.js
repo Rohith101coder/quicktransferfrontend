@@ -95,4 +95,60 @@ export const deleteFile = async (fileId) => {
   return response.data;
 };
 
+// ========================================
+// Get shared texts
+// ========================================
+
+export const getTexts = async () => {
+
+    const response = await api.get("/text");
+
+    return response.data;
+};
+
+
+// ========================================
+// Share text
+// ========================================
+
+export const sendText = async (content) => {
+
+    const response = await api.post(
+        "/text",
+        {
+            content
+        }
+    );
+
+    return response.data;
+};
+
+
+// ========================================
+// Complete text transfer
+// ========================================
+
+export const completeText = async (textId) => {
+
+    const response = await api.post(
+        `/text/${textId}/complete`
+    );
+
+    return response.data;
+};
+
+
+// ========================================
+// Delete text
+// ========================================
+
+export const deleteText = async (textId) => {
+
+    const response = await api.delete(
+        `/text/${textId}`
+    );
+
+    return response.data;
+};
+
 export default api;
